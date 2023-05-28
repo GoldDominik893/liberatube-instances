@@ -1,1 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Predefined URLs</title>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    
+    ul {
+      list-style-type: none;
+      padding: 0;
+    }
+    
+    li {
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Predefined URLs</h1>
+  <ul id="urlList"></ul>
 
+  <script>
+    // Get URL parameters
+    function getUrlParams() {
+      const queryString = window.location.search;
+      const urlParams = new URLSearchParams(queryString);
+      return urlParams;
+    }
+
+    // Add URL parameters to predefined URLs
+    function addUrlParameters() {
+      const urlList = document.getElementById('urlList');
+      const urlParams = getUrlParams();
+      
+      const predefinedUrls = [
+        'https://example.com/page1',
+        'https://example.com/page2',
+        'https://example.com/page3'
+      ];
+
+      predefinedUrls.forEach(function(url) {
+        const li = document.createElement('li');
+        const paramUrl = url + '?' + urlParams.toString();
+        const link = document.createElement('a');
+        link.href = paramUrl;
+        link.textContent = paramUrl;
+        li.appendChild(link);
+        urlList.appendChild(li);
+      });
+    }
+
+    // Call the function to add URL parameters
+    addUrlParameters();
+  </script>
+</body>
+</html>
