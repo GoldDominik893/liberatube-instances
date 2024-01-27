@@ -1,108 +1,17 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Select an instance</title>
-  <style>
-    body {
-      background-color: #2b2b2b;
-      color: #ffffff;
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-    }
-
-    .widget {
-      background-color: rgba(43, 43, 43, 0.9);
-      border-radius: 5px;
-      padding: 20px;
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-    }
-
-    h1 {
-      margin-top: 0;
-    }
-
-    table {
-      width: 100%;
-      border-collapse: collapse;
-    }
-
-    th, td {
-      padding: 10px;
-      text-align: left;
-      border-bottom: 1px solid #ffffff;
-    }
-
-    th {
-      background-color: #333333;
-      color: #ffffff;
-    }
-
-    tr:nth-child(even) {
-      background-color: rgba(255, 255, 255, 0.1);
-    }
-
-    a {
-      color: #ffffff;
-      text-decoration: none;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Instance Switcher</title>
 </head>
 <body>
-  <div class="widget">
-    <h1>Liberatube</h1>
-    <p>To use this link, select an instance.</p>
-    <table>
-      <thead>
-        <tr>
-          <th>Domain</th>
-          <th>Status</th>
-        </tr>
-      </thead>
-      <tbody id="urlList"></tbody>
-    </table>
-  </div>
 
-  <script>
-    // Get URL parameters
-    function getUrlParams() {
-      const queryString = window.location.search;
-      const urlParams = new URLSearchParams(queryString);
-      return urlParams;
-    }
+<h1>Liberatube Instance Switcher</h1>
+<p>To use this link, please select an instance from the list below.</p>
+<div id="instancesTable"></div>
 
-    // Add URL parameters to predefined URLs
-    function addUrlParameters() {
-      const urlList = document.getElementById('urlList');
-      const urlParams = getUrlParams();
-
-      const predefinedUrls = [
-        { url: 'https://badyt.lol', status: 'Active' },
-        { url: 'https://liberatube.store', status: 'Active' },
-        { url: 'https://ltbeta.epicsite.xyz', status: 'Active' }
-      ];
-
-      predefinedUrls.forEach(function(item) {
-        const tr = document.createElement('tr');
-        const paramUrl = urlParams.toString() ? item.url + '?' + urlParams.toString() : item.url;
-        const link = document.createElement('a');
-        link.href = paramUrl;
-        link.textContent = paramUrl;
-        const tdUrl = document.createElement('td');
-        tdUrl.appendChild(link);
-        const tdStatus = document.createElement('td');
-        tdStatus.textContent = item.status;
-        tr.appendChild(tdUrl);
-        tr.appendChild(tdStatus);
-        urlList.appendChild(tr);
-      });
-    }
-
-    // Call the function to add URL parameters
-    addUrlParameters();
-  </script>
+<script src="script.js"></script>
 </body>
 </html>
