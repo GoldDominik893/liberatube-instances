@@ -32,6 +32,8 @@ function getUrlParameter(name) {
 // Function to display links
 function displayLinks(instances) {
     const vParameter = getUrlParameter('v');
+    const customThemePlayerRow = getUrlParameter('customthemeplayerrow');
+    const customThemeHomeRow = getUrlParameter('customthemehomerow');
     const instancesTable = document.getElementById('instancesTable');
 
     // Create table element
@@ -45,7 +47,19 @@ function displayLinks(instances) {
 
     // Create table body rows
     instances.forEach(instance => {
-        const linkHref = vParameter ? `https://${instance.url}/watch/?v=${vParameter}` : `https://${instance.url}`;
+        let linkHref = `https://${instance.url}`;
+        if (vParameter) {
+            linkHref += `/watch/?v=${vParameter}`;
+        }
+        if (customThemePlayerRow || customThemeHomeRow) {
+            linkHref = `https://${instance.url}/settings.php/?`;
+            if (customThemePlayerRow) {
+                linkHref += `customthemeplayerrow=${customThemePlayerRow}`;
+            }
+            if (customThemeHomeRow) {
+                linkHref += `&customthemehomerow=${customThemeHomeRow}`;
+            }
+        }
 
         const row = document.createElement('tr');
         row.innerHTML = `<td><a href="${linkHref}">${instance.url}</a></td><td>${instance.type}</td><td>${instance.version}</td><td>${instance.miTM}</td><td>${instance.country}</td><td>${instance.hostedBy}</td><td>${instance.source}</td>`;
@@ -57,7 +71,6 @@ function displayLinks(instances) {
     instancesTable.innerHTML = '';
     instancesTable.appendChild(table);
 }
-
 
 // Fetch CSV file asynchronously
 fetch('instances.csv')
