@@ -1,3 +1,3 @@
-URL                 ,Type   ,Version     ,MiTM       ,Country        ,Hosted By      ,Source
-lt.epicsite.xyz     ,Stable ,v1.9delta   ,Cloudflare ,United Kingdom ,GoldDominik893 ,Unmodified
-ltdev.epicsite.xyz  ,Beta   ,Development ,Cloudflare ,United Kingdom ,GoldDominik893 ,Unmodified
+URL                 ,Type   ,Version     ,MiTM       ,Country ,Hosted By      ,Source
+lt.epicsite.xyz     ,Stable ,v1.9delta   ,Cloudflare ,🇬🇧      ,GoldDominik893 ,Unmodified
+ltdev.epicsite.xyz  ,Beta   ,Development ,Cloudflare ,🇬🇧      ,GoldDominik893 ,Unmodified
